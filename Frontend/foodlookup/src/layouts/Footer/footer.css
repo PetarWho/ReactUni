@@ -1,0 +1,11 @@
+.site-footer{
+    background-color: #333;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-text{
+    font-weight: bold;
+    color:rgb(251, 251, 244);
+}

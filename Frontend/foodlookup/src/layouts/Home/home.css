@@ -1,0 +1,69 @@
+.search-container {
+    margin: 20px 10px;
+    display: flex;
+  }
+  
+  .search-input {
+    width: calc(30% - 30px);
+    padding: 7px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+  }
+
+  .search-icon {
+    transform: translateX(-140%);
+    cursor: pointer;
+  }
+  
+  .table-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .custom-table th {
+    background: #f2f2f2;
+    font-weight: bold;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+
+  }
+  
+  .custom-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .search-table, .selected-table{
+    background: #f2f2f2;
+    border:1px solid black;
+    border-radius: 3px;
+  }
+
+  .main{
+    max-width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    margin: auto;
+    margin-top: 80px;
+  }
+
+  .selected-food{
+    font-weight: bold;
+  }
+
+  .selected-row{
+    display: flex;
+    margin-left: 10px;
+  }
+
+  
