@@ -11,7 +11,7 @@ function API(){
             Then open <b>Package Manager Console <i>(Tools{">"}Nuget Package Manager{">"}Package Manager Console)</i></b>. <br/>
             In the Package Manager Console enter <b>update-database</b>. This will create the database on your machine.<br/>
             Now you can start the API by using the <b>green button</b> or pressing <b>F5</b>. <br />
-            Once the API is running, you won't have any records so start by creating some <b>here</b>.
+            Once the API is running, you won't have any records so start by creating some <b><a href="/" className="home-link">here</a></b>.
             </p>
             <img className="api-img" src={Pic}></img>
         </div>
