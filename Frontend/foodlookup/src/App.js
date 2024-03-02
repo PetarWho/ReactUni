@@ -11,7 +11,9 @@ function App() {
       <Header/>
        <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/api" element={<API />} />
           </Routes>
+          <div className='empty'></div>
       <Footer />
     </div>
   );

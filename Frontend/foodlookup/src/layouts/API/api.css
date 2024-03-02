@@ -1,0 +1,11 @@
+.api-box{
+    max-width: 70%;
+    margin: auto;
+}
+
+.api-img{
+    display: block;
+    margin: auto;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
