@@ -132,7 +132,19 @@
 }
 
 .remove-btn:hover {
-  background-color: #bb0b0b;
+  background-color: #ca1515;
+}
+
+.red{
+  color:rgb(204, 1, 1);
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.top-box{
+  display:flex;
+  gap:120px;
 }
 
 

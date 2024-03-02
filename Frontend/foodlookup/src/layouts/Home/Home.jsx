@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './home.css';
 import ModalForm from './ModalForm';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     const ENDPOINT = "https://localhost:7283";
@@ -9,6 +10,7 @@ const Home = () => {
     const [selectedItems, setSelectedItems] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [preserve, setPreserve] = useState(false);
+    const [hasConnection, setHasConnection] = useState(true);
 
     const handleSearchChange = async (e) => {
         const { value } = e.target;
@@ -27,6 +29,22 @@ const Home = () => {
             setSearchResults([]);
         }
     };
+
+    useEffect(() => {
+        const checkConnection = async () => {
+            try {
+                const response = await fetch(`${ENDPOINT}/api/Food/test`);
+                if (response.status !== 200) {
+                    setHasConnection(false);
+                }
+            } catch (error) {
+                console.error('Error checking connection:', error);
+                setHasConnection(false);
+            }
+        };
+
+        checkConnection();
+    }, []);
 
     const handleCheckboxChange = (e) => {
         setPreserve(e.target.checked);
@@ -66,7 +84,7 @@ const Home = () => {
         const updatedSelectedItems = selectedItems.filter((item, index) => index !== indexToRemove);
         setSelectedItems(updatedSelectedItems);
     };
-    
+
 
 
 
@@ -102,7 +120,14 @@ const Home = () => {
         <>
             <h2 className='heading'>Food Lookup</h2>
             <div className='main'>
-                <button className="add-button" onClick={() => setShowModal(true)}>New Food</button>
+                <div className='top-box'>
+                    <button className="add-button" onClick={() => setShowModal(true)}>New Food</button>
+                    {!hasConnection && (
+                        <p className='red'>
+                            You don't have connection with the API, please read <Link className='link' to="/api">this</Link> to get started
+                        </p>
+                    )}
+                </div>
                 <div className="selected-table">
                     <div className='selected-row'>
                         <p className='selected-food'>Selected foods</p>
