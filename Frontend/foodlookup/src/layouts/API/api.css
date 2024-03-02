@@ -1,6 +1,7 @@
 .api-box{
     max-width: 70%;
     margin: auto;
+    display: flex;
 }
 
 .api-img{
@@ -12,4 +13,8 @@
 
 .home-link{
     color:black;
+}
+
+.api-info{
+    margin-right: 15px;
 }

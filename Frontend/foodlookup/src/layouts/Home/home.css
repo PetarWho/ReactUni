@@ -83,8 +83,6 @@
     background-color: #0056b3;
   }
 
-  /* Inside styles.css */
-
 .checkbox-container {
     display: flex;
     align-items: center;
@@ -111,6 +109,31 @@
     background-color: #007bff; 
 }
 
+.add-btn {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background-color: #0056b3;
+}
+
+.remove-btn{
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #d90d0d;
+}
+
+.remove-btn:hover {
+  background-color: #bb0b0b;
+}
 
 
   /* MODAL */

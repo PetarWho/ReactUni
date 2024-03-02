@@ -3,6 +3,7 @@ import './home.css';
 import ModalForm from './ModalForm';
 
 const Home = () => {
+    const ENDPOINT = "https://localhost:7283";
     const [searchValue, setSearchValue] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [selectedItems, setSelectedItems] = useState([]);
@@ -15,7 +16,7 @@ const Home = () => {
 
         if (value.trim().length > 0) {
             try {
-                const response = await fetch(`https://localhost:7283/api/Food/get?input=${value}`);
+                const response = await fetch(`${ENDPOINT}/api/Food/get?input=${value}`);
                 const data = await response.json();
                 setSearchResults(data);
             } catch (error) {
@@ -40,7 +41,7 @@ const Home = () => {
     };
 
     const handleSubmitForm = (formData) => {
-        fetch('https://localhost:7283/api/Food/add', {
+        fetch(`${ENDPOINT}/api/Food/add`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -60,6 +61,14 @@ const Home = () => {
                 alert('Failed to add food');
             });
     };
+
+    const handleRemoveItemClick = (indexToRemove) => {
+        const updatedSelectedItems = selectedItems.filter((item, index) => index !== indexToRemove);
+        setSelectedItems(updatedSelectedItems);
+    };
+    
+
+
 
     const columns = [
         {
@@ -108,11 +117,14 @@ const Home = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {selectedItems.map(item => (
+                                {selectedItems.map((item, index) => (
                                     <tr key={item.key}>
                                         {columns.map(column => (
                                             <td key={column.key}>{item[column.dataIndex]}</td>
                                         ))}
+                                        <td>
+                                            <button className='remove-btn' onClick={() => handleRemoveItemClick(index)}>X</button>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -164,6 +176,9 @@ const Home = () => {
                                         {columns.map(column => (
                                             <td key={column.key}>{item[column.dataIndex]}</td>
                                         ))}
+                                        <td>
+                                            <button className='add-btn' onClick={() => handleAddItemClick(item)}>Add</button>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
