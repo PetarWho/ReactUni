@@ -11,6 +11,8 @@ const Home = () => {
     const [showModal, setShowModal] = useState(false);
     const [preserve, setPreserve] = useState(false);
     const [hasConnection, setHasConnection] = useState(true);
+    const [successMessage, setSuccessMessage] = useState('');
+
 
     const handleSearchChange = async (e) => {
         const { value } = e.target;
@@ -46,6 +48,15 @@ const Home = () => {
         checkConnection();
     }, []);
 
+    useEffect(() => {
+        if (successMessage) {
+          const timer = setTimeout(() => {
+            setSuccessMessage('');
+          }, 3000);
+          return () => clearTimeout(timer);
+        }
+      }, [successMessage]);
+
     const handleCheckboxChange = (e) => {
         setPreserve(e.target.checked);
 
@@ -68,14 +79,13 @@ const Home = () => {
         })
             .then(response => {
                 if (response.ok) {
-                    alert('Food item added successfully');
+                    setSuccessMessage('Food item added successfully');
                     setShowModal(false);
                 } else {
                     throw new Error('Failed to add food');
                 }
             })
             .catch(error => {
-                console.error('Error adding food:', error);
                 alert('Failed to add food');
             });
     };
@@ -119,6 +129,7 @@ const Home = () => {
     return (
         <>
             <h2 className='heading'>Food Lookup</h2>
+            {successMessage && <div className="success-message">{successMessage}</div>}
             <div className='main'>
                 <div className='top-box'>
                     <button className="add-button" onClick={() => setShowModal(true)}>New Food</button>

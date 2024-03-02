@@ -147,6 +147,33 @@
   gap:120px;
 }
 
+.success-message {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background-color: #4caf50; 
+  color: #fff; 
+  padding: 15px 20px; 
+  border-radius: 5px;
+  font-size: 1.2rem; 
+  width: fit-content; 
+  z-index: 999; 
+  animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10%, 90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
 
   /* MODAL */
 
@@ -221,4 +248,9 @@ label {
 
 .add-form button[type="submit"]:hover {
   background-color: #0056b3;
+}
+
+.error-message{
+  color:rgb(204, 1, 1);
+  margin-bottom: 10px;
 }

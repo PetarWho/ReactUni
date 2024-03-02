@@ -9,6 +9,8 @@ const ModalForm = ({ visible, onClose, onSubmit }) => {
     fat: '0',
     carbs: '0'
   });
+  const [errorMessage, setErrorMessage] = useState('');
+
   if (!visible) {
     return null; // Hide the modal if it's not visible
   }
@@ -24,36 +26,36 @@ const ModalForm = ({ visible, onClose, onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Frontend validation
     if (formData.description.length < 3 || formData.description.length > 25) {
-      alert('Description must be between 3 and 25 characters');
+      setErrorMessage('Description must be between 3 and 25 characters');
       return;
     }
     if (isNaN(parseFloat(formData.kcal))) {
-      alert('Kcal must be a number');
+      setErrorMessage('Kcal must be a number');
       return;
     }
     if (isNaN(parseFloat(formData.fat))) {
-      alert('Fat must be a number');
+      setErrorMessage('Fat must be a number');
       return;
     }
     if (isNaN(parseFloat(formData.protein))) {
-      alert('Protein must be a number');
+      setErrorMessage('Protein must be a number');
       return;
     }
     if (isNaN(parseFloat(formData.carbs))) {
-      alert('Carbs must be a number');
+      setErrorMessage('Carbs must be a number');
       return;
     }
 
     onSubmit(formData);
     setFormData({
       description: '',
-    kcal: '0',
-    protein: '0',
-    fat: '0',
-    carbs: '0'
+      kcal: '0',
+      protein: '0',
+      fat: '0',
+      carbs: '0'
     });
+    setErrorMessage('');
   };
 
   return (
@@ -63,6 +65,7 @@ const ModalForm = ({ visible, onClose, onSubmit }) => {
           <h2>Add Food</h2>
           <span className="modal-close" onClick={onClose}>&times;</span>
         </div>
+        <div className="error-message">{errorMessage}</div>
         <form className='add-form' onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Description:</label>
