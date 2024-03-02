@@ -18,7 +18,7 @@ namespace FoodLookupAPI.Controllers
         [HttpGet("get")]
         public async Task<List<Food>?> GetFoods(string input)
         {
-            var foods = await context.Foods.Where(x => x.Description.ToLower().Contains(input.ToLower())).ToListAsync();
+            var foods = await context.Foods.Where(x => x.Description.ToLower().Contains(input.ToLower().Trim())).ToListAsync();
 
             return foods;
         }
@@ -33,7 +33,7 @@ namespace FoodLookupAPI.Controllers
 
             var food = new Food()
             {
-                Description = model.Description,
+                Description = model.Description.Trim(),
                 Fat = model.Fat,
                 Kcal = model.Kcal,
                 Carbs = model.Carbs,
