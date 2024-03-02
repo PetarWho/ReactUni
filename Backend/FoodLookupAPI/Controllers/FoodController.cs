@@ -51,5 +51,11 @@ namespace FoodLookupAPI.Controllers
 
             return Ok(food);
         }
+
+        [HttpGet("test")]
+        public IActionResult TestConnection()
+        {
+            return Ok();
+        }
     }
 }
