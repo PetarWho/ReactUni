@@ -17,7 +17,7 @@ function API(){
             To do that, navigate to <b>src{">"}layouts{">"}Home{">"}Home.jsx</b> and edit the <b>ENDPOINT</b> constant.<br/>
             Once the API is running, you won't have any records so start by creating some <b><Link to="/" className="home-link">here</Link></b>.
             </p>
-            <img className="api-img" width={430} src={Pic}></img>
+            <img className="api-img" width={430} alt="API" src={Pic}></img>
         </div>
         </>
     );

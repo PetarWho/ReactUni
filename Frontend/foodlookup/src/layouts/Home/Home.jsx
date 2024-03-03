@@ -103,28 +103,55 @@ const Home = () => {
             title: 'Description',
             dataIndex: 'description',
             key: 'description',
+            isNumeric: false
         },
         {
             title: 'Kcal',
             dataIndex: 'kcal',
             key: 'kcal',
+            isNumeric: true
         },
         {
             title: 'Protein(g)',
             dataIndex: 'protein',
             key: 'protein',
+            isNumeric: true
         },
         {
             title: 'Fat(g)',
             dataIndex: 'fat',
             key: 'fat',
+            isNumeric: true
         },
         {
             title: 'Carbs(g)',
             dataIndex: 'carbs',
             key: 'carbs',
+            isNumeric: true
         },
     ];
+
+    const calculateTotal = () => {
+        const total = {};
+
+        columns.forEach(column => {
+            if (column.isNumeric) {
+                total[column.dataIndex] = 0;
+            }
+        });
+
+        selectedItems.forEach(item => {
+            columns.forEach(column => {
+                if (column.isNumeric) {
+                    total[column.dataIndex] += parseFloat(item[column.dataIndex]) || 0;
+                }
+            });
+        });
+
+        return total;
+    };
+
+    const total = calculateTotal();
 
     return (
         <>
@@ -163,6 +190,12 @@ const Home = () => {
                                         </td>
                                     </tr>
                                 ))}
+                                <tr>
+                                    <td className='bold'>Total</td>
+                                    {columns.map(column => (
+                                        column.isNumeric && <td className='bold' key={column.key}>{total[column.dataIndex]}</td>
+                                    ))}
+                                </tr>
                             </tbody>
                         </table>
                     </div>

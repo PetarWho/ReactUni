@@ -161,6 +161,10 @@
   animation: fadeInOut 3s ease-in-out;
 }
 
+.bold{
+  font-weight: bold;
+}
+
 @keyframes fadeInOut {
   0% {
     opacity: 0;

@@ -12,7 +12,7 @@ function About(){
                 <p>Users can pick foods and add them to their Selected List which will calculate the total nutrition of all these foods.</p>
                 <p>The app is dependant on <b>Backend</b> and <b>Database</b>, so if you havent set up the API yet, please read <b><Link className="link" to={"/api"}>this article</Link></b>.</p>
             </div>
-            <img width={150} style={{marginTop:20}} src={Pic}></img>
+            <img width={150} style={{marginTop:20}} alt="logo" src={Pic}></img>
         </div>
         </>
     );
