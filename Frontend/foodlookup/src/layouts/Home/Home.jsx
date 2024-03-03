@@ -50,12 +50,12 @@ const Home = () => {
 
     useEffect(() => {
         if (successMessage) {
-          const timer = setTimeout(() => {
-            setSuccessMessage('');
-          }, 3000);
-          return () => clearTimeout(timer);
+            const timer = setTimeout(() => {
+                setSuccessMessage('');
+            }, 3000);
+            return () => clearTimeout(timer);
         }
-      }, [successMessage]);
+    }, [successMessage]);
 
     const handleCheckboxChange = (e) => {
         setPreserve(e.target.checked);
@@ -151,6 +151,14 @@ const Home = () => {
         return total;
     };
 
+    const clear = () => {
+        setSearchValue('');
+        if (!preserve) {
+            setSearchResults([]);
+        }
+    }
+
+
     const total = calculateTotal();
 
     return (
@@ -223,6 +231,10 @@ const Home = () => {
                                 d="M22.7071 21.2929C23.0976 21.6834 23.0976 22.3166 22.7071 22.7071C22.3166 23.0976 21.6834 23.0976 21.2929 22.7071L17.5448 18.959C16.2717 19.7612 14.7573 20.2287 13.1716 20.2287C9.65548 20.2287 6.76116 17.3344 6.76116 13.8183C6.76116 10.3022 9.65548 7.40791 13.1716 7.40791C16.6877 7.40791 19.582 10.3022 19.582 13.8183C19.582 15.404 19.1145 16.9184 18.3123 18.1915L22.0605 21.9397C22.451 22.3302 23.0842 22.3302 23.4747 21.9397C23.8652 21.5492 23.8652 20.916 23.4747 20.5255L22.7071 21.2929ZM13.1716 17.6679C15.8093 17.6679 17.9162 15.5611 17.9162 12.9234C17.9162 10.2857 15.8093 8.17888 13.1716 8.17888C10.5339 8.17888 8.42711 10.2857 8.42711 12.9234C8.42711 15.5611 10.5339 17.6679 13.1716 17.6679Z"
                                 fill="#777777"
                             />
+                        </svg>
+                        <svg onClick={clear} className='clear-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M6.29 6.71a.996.996 0 0 0 0 1.41L10.59 12 6.29 16.29a.996.996 0 1 0 1.41 1.41L12 13.41l4.29 4.3a.996.996 0 1 0 1.41-1.41L13.41 12l4.3-4.29a.996.996 0 1 0-1.41-1.41L12 10.59 7.71 6.29a.996.996 0 0 0-1.41 0z" 
+                            fill='#777777'/>
                         </svg>
                         <input type='checkbox'
                             onChange={handleCheckboxChange}
