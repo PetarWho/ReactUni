@@ -12,6 +12,7 @@ const Home = () => {
     const [preserve, setPreserve] = useState(false);
     const [hasConnection, setHasConnection] = useState(true);
     const [successMessage, setSuccessMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
 
     const handleSearchChange = async (e) => {
@@ -57,6 +58,15 @@ const Home = () => {
         }
     }, [successMessage]);
 
+    useEffect(() => {
+        if (errorMessage) {
+            const timer = setTimeout(() => {
+                setErrorMessage('');
+            }, 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [errorMessage]);
+
     const handleCheckboxChange = (e) => {
         setPreserve(e.target.checked);
 
@@ -86,7 +96,8 @@ const Home = () => {
                 }
             })
             .catch(error => {
-                alert('Failed to add food');
+                setShowModal(false);
+                setErrorMessage('Failed to add food');
             });
     };
 
@@ -165,6 +176,7 @@ const Home = () => {
         <>
             <h2 className='heading'>Food Lookup</h2>
             {successMessage && <div className="success-message">{successMessage}</div>}
+            {errorMessage && <div className="error-message-toast">{errorMessage}</div>}
             <div className='main'>
                 <div className='top-box'>
                     <button className="add-button" onClick={() => setShowModal(true)}>New Food</button>

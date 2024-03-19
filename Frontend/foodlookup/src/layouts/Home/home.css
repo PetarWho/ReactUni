@@ -166,6 +166,20 @@
   animation: fadeInOut 3s ease-in-out;
 }
 
+.error-message-toast{
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background-color: #b91e1e; 
+  color: #fff; 
+  padding: 15px 20px; 
+  border-radius: 5px;
+  font-size: 1.2rem; 
+  width: fit-content; 
+  z-index: 999; 
+  animation: fadeInOut 3s ease-in-out;
+}
+
 .bold{
   font-weight: bold;
 }
